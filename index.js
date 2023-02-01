@@ -60,23 +60,30 @@ app.use("/posts", postRoutes);
 // Connecting frontend
 app.use(express.static(path.join(__dirname, "./client/build")));
 
-app.get("*", function (_, res) {
-    res.sendFile(
-        path.join(__dirname, "./client/build/index.html"),
-        function (err) {
-            res.status(500).send(err);
-        }
-    );
+// app.get("*", function (_, res) {
+//     res.sendFile(
+//         path.join(__dirname, "./client/build/index.html"),
+//         function (err) {
+//             res.status(500).send(err);
+//         }
+//     );
+// });
+
+app.all('/', (req, res) => {
+    console.log
+    res.sendFile("./client/build/index.html", function (err) {
+        res.status(500).send(err);
+    });
 });
 
 /* MongoDB setup */
-const PORT = 3001 || 6001;
+const PORT = process.env.PORT || 6001;
 
 // suppress deprecation warning
 mongoose.set('strictQuery', true);
 
 // connect to MongoDB
-mongoose.connect('mongodb+srv://dummyuser:dummyuser123@cluster0.kedljby.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
