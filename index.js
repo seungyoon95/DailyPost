@@ -39,7 +39,7 @@ app.use("tmp/assets", express.static(path.join(__dirname, 'tmp/public/assets')))
 /* file storage */
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "tmp/public/assets");
+        cb(null, "public/assets");
     },
     filename: function(req, file, cb) {
         cb(null, file.originalname);
@@ -49,13 +49,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /* Routes with files */
-app.post("tmp/auth/register", upload.single("picture"), register);
-app.post("tmp/posts", verifyToken, upload.single("picture"), createPost);
+app.post("/tmp/auth/register", upload.single("picture"), register);
+app.post("/tmp/posts", verifyToken, upload.single("picture"), createPost);
 
 /* Routes */
-app.use("tmp/auth", authRoutes);
-app.use("tmp/users", userRoutes);
-app.use("tmp/posts", postRoutes);
+app.use("/tmp/auth", authRoutes);
+app.use("/tmp/users", userRoutes);
+app.use("/tmp/posts", postRoutes);
 
 // Connecting frontend
 app.use(express.static(path.join(__dirname, "./client/build")));
