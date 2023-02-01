@@ -57,10 +57,28 @@ app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
+/* MongoDB setup */
+const PORT = process.env.PORT || 6001;
+
+// suppress deprecation warning
+mongoose.set('strictQuery', true);
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useUnifiedTopology', true);
+
+mongoose.connect(process.env.MONGO_URL);
+
+mongoose.connection.on("connected", () => {
+    console.log("Connection to MongoDB Established");
+})
+
+mongoose.connection.on("error", () => {
+    console.log("could not connect to MongoDB");
+})
+
 // Connecting frontend
 app.use(express.static(path.join(__dirname, "./client/build")));
 
-app.get("*", function (_, res) {
+app.get("*", function (req, res) {
     res.sendFile(
         path.join(__dirname, "./client/build/index.html"),
         function (err) {
@@ -69,21 +87,19 @@ app.get("*", function (_, res) {
     );
 });
 
-/* MongoDB setup */
-const PORT = process.env.PORT || 6001;
+app.listen(PORT, () => {
+    console.log(`Server running at port: ${PORT}`);
+});
 
-// suppress deprecation warning
-mongoose.set('strictQuery', true);
+// // connect to MongoDB
+// mongoose.connect(process.env.MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// }).then(() => {
+//     app.listen(PORT, () => console.log(`Server started at port: ${PORT}`));
 
-// connect to MongoDB
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => {
-    app.listen(PORT, () => console.log(`Server started at port: ${PORT}`));
+//     // inject mock data on initial run
+//     // User.insertMany(users);
+//     // Post.insertMany(posts);
 
-    // inject mock data on initial run
-    // User.insertMany(users);
-    // Post.insertMany(posts);
-
-}).catch((error) => console.log(`${error} did not connect`));
+// }).catch((error) => console.log(`${error} did not connect`));
