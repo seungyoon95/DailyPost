@@ -60,20 +60,13 @@ app.use("/posts", postRoutes);
 // Connecting frontend
 app.use(express.static(path.join(__dirname, "./client/build")));
 
-// app.get("*", function (_, res) {
-//     res.sendFile(
-//         path.join(__dirname, "./client/build/index.html"),
-//         function (err) {
-//             res.status(500).send(err);
-//         }
-//     );
-// });
-
-app.all('/', (req, res) => {
-    console.log
-    res.sendFile("./client/build/index.html", function (err) {
-        res.status(500).send(err);
-    });
+app.get("*", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "./client/build/index.html"),
+        function (err) {
+            res.status(500).send(err);
+        }
+    );
 });
 
 /* MongoDB setup */
