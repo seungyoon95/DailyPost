@@ -17,7 +17,7 @@ const ProfilePage = () => {
   const isMyself = Boolean(_id === userId);
   
   const getUser = async () => {
-    const response = await fetch(`/users/${userId}`, {
+    const response = await fetch(`/tmp/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -55,7 +55,7 @@ const ProfilePage = () => {
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
         >
-          <MyPostWidget picturePath={user.picturePath} />
+          {/* <MyPostWidget picturePath={user.picturePath} /> */}
           <Box m="2rem 0" />
           <PostsWidget userId={userId} isProfile />
         </Box>
