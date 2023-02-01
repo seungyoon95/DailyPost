@@ -70,13 +70,13 @@ app.get("*", function (_, res) {
 });
 
 /* MongoDB setup */
-const PORT = process.env.PORT || 6001;
+const PORT = 3001 || 6001;
 
 // suppress deprecation warning
 mongoose.set('strictQuery', true);
 
 // connect to MongoDB
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect('mongodb+srv://dummyuser:dummyuser123@cluster0.kedljby.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
