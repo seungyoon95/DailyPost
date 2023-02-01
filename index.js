@@ -34,12 +34,12 @@ app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "15mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "15mb", extended: true }));
 app.use(cors());
-app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
+app.use("tmp/assets", express.static(path.join(__dirname, 'tmp/public/assets')));
 
 /* file storage */
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "public/assets");
+        cb(null, "tmp/public/assets");
     },
     filename: function(req, file, cb) {
         cb(null, file.originalname);
@@ -49,13 +49,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 /* Routes with files */
-app.post("/auth/register", upload.single("picture"), register);
-app.post("/posts", verifyToken, upload.single("picture"), createPost);
+app.post("tmp/auth/register", upload.single("picture"), register);
+app.post("tmp/posts", verifyToken, upload.single("picture"), createPost);
 
 /* Routes */
-app.use("/auth", authRoutes);
-app.use("/users", userRoutes);
-app.use("/posts", postRoutes);
+app.use("tmp/auth", authRoutes);
+app.use("tmp/users", userRoutes);
+app.use("tmp/posts", postRoutes);
 
 // Connecting frontend
 app.use(express.static(path.join(__dirname, "./client/build")));

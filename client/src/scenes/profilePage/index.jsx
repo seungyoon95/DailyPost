@@ -17,7 +17,7 @@ const ProfilePage = () => {
   const isMyself = Boolean(_id === userId);
   
   const getUser = async () => {
-    const response = await fetch(`/users/${userId}`, {
+    const response = await fetch(`tmp/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
