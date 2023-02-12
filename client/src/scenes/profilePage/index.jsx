@@ -2,11 +2,11 @@ import { Box, useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Navbar from "scenes/navbar";
-import FriendListWidget from "scenes/widgets/FriendListWidget";
-import MyPostWidget from "scenes/widgets/MyPostWidget";
-import PostsWidget from "scenes/widgets/PostsWidget";
-import UserWidget from "scenes/widgets/UserWidget";
+import Navbar from "../navbar";
+import FriendListWidget from "../widgets/FriendListWidget";
+import MyPostWidget from "..//widgets/MyPostWidget";
+import PostsWidget from "../widgets/PostsWidget";
+import UserWidget from "../widgets/UserWidget";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -17,7 +17,7 @@ const ProfilePage = () => {
   const isMyself = Boolean(_id === userId);
   
   const getUser = async () => {
-    const response = await fetch(`/tmp/users/${userId}`, {
+    const response = await fetch(`https://dailypost.seungyoon-lee.com/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });

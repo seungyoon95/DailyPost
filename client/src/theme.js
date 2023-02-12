@@ -15,17 +15,29 @@ export const colorTokens = {
       900: "#0A0A0A",
       1000: "#000000",
     },
+
+    // primary: {
+    //     100: "#d7dbdf",
+    //     200: "#afb7bf",
+    //     300: "#8692a0",
+    //     400: "#5e6e80",
+    //     500: "#364a60",
+    //     600: "#2b3b4d",
+    //     700: "#202c3a",
+    //     800: "#161e26",
+    //     900: "#0b0f13"
+    // },
+
     primary: {
-      50: "#E6FBFF",
-      100: "#CCF7FE",
-      200: "#99EEFD",
-      300: "#66E6FC",
-      400: "#33DDFB",
-      500: "#00D5FA",
-      600: "#00A0BC",
-      700: "#006B7D",
-      800: "#00353F",
-      900: "#001519",
+        100: "#f3f5f5",
+        200: "#e7ebec",
+        300: "#dce0e2",
+        400: "#d0d6d9",
+        500: "#c4cccf",
+        600: "#9da3a6",
+        700: "#767a7c",
+        800: "#4e5253",
+        900: "#272929"
     },
   };
   
@@ -52,6 +64,7 @@ export const colorTokens = {
               background: {
                 default: colorTokens.grey[900],
                 alt: colorTokens.grey[800],
+                post: colorTokens.grey[900],
               },
             }
           : {
@@ -71,6 +84,7 @@ export const colorTokens = {
               background: {
                 default: colorTokens.grey[10],
                 alt: colorTokens.grey[0],
+                post: colorTokens.grey[900],
               },
             }),
       },

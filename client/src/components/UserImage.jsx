@@ -8,7 +8,7 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`/tmp/assets/${image}`}
+        src={`https://dailypost.seungyoon-lee.com/assets/${image}`}
       />
     </Box>
   );

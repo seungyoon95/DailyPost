@@ -4,11 +4,11 @@ import {
   ShareOutlined,
 } from "@mui/icons-material";
 import { IconButton, Typography, useTheme } from "@mui/material";
-import FlexBetween from "components/FlexBetween";
-import Friend from "components/Friend";
-import WidgetWrapper from "components/WidgetWrapper";
+import FlexBetween from "../../components/FlexBetween";
+import Friend from "../../components/Friend";
+import WidgetWrapper from "../../components/WidgetWrapper";
 import { useDispatch, useSelector } from "react-redux";
-import { setPost } from "state";
+import { setPost } from "../../state";
 
 const PostWidget = ({
   postId,
@@ -32,7 +32,7 @@ const PostWidget = ({
   const primary = palette.primary.main;
 
   const patchLike = async () => {
-    const response = await fetch(`/tmp/posts/${postId}/like`, {
+    const response = await fetch(`https://dailypost.seungyoon-lee.com/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`/tmp/assets/${picturePath}`}
+          src={`https://dailypost.seungyoon-lee.com/assets/${picturePath}`}
         />
       )}
 
