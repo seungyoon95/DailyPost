@@ -61,14 +61,11 @@ app.use("/posts", postRoutes);
 /* MongoDB setup */
 const PORT = process.env.PORT || 6001;
 
-const dbUser = fs.readFileSync(process.env.DB_USER);
-const dbPassword = fs.readFileSync(process.env.DB_PASSWORD);
-
 // suppress deprecation warning
 mongoose.set('strictQuery', true);
 
 // connect to MongoDB
-mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@cluster0.kedljby.mongodb.net/?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.kedljby.mongodb.net/?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
