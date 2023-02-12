@@ -8,7 +8,7 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`https://dailypost.seungyoon-lee.com/assets/${image}`}
+        src={`https://dailypostapi.onrender.com/assets/${image}`}
       />
     </Box>
   );

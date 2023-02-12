@@ -24,7 +24,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
   const patchFriend = async () => {
     const response = await fetch(
-      `https://dailypost.seungyoon-lee.com/users/${_id}/${friendId}`,
+      `https://dailypostapi.onrender.com/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {

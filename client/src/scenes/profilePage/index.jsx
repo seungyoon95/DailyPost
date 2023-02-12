@@ -17,7 +17,7 @@ const ProfilePage = () => {
   const isMyself = Boolean(_id === userId);
   
   const getUser = async () => {
-    const response = await fetch(`https://dailypost.seungyoon-lee.com/users/${userId}`, {
+    const response = await fetch(`https://dailypostapi.onrender.com/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
