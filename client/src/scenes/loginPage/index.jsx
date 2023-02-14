@@ -30,6 +30,14 @@ const LoginPage = () => {
         </Typography>
         <Form />
       </Box>
+      <Box ml="auto" mr="auto" width="100%" maxWidth="500px" textAlign="center">
+        <Typography>**Note**</Typography>
+        <Typography>
+          Server takes some time process any requests, especially when it's running
+          for the first time after 15 minutes of inactivity. Please don't panic
+          if the login button doesn't respond, it's working as hard as it can!
+        </Typography>
+      </Box>
     </Box>
   );
 };
